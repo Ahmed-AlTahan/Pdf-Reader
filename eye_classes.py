@@ -1,0 +1,94 @@
+import cv2
+import numpy as np
+
+import ImageUtilities
+
+
+class decision :
+
+    def __init__(self):
+        self.frame_counter = 0
+        self.res_right = 0
+        self.res_left = 0
+        self.res_center = 0
+        self.close = 0
+        self.frame_counter = 0
+
+    def start(self,eye , threshold):
+        left_image ,  right_image , center_image = self.eye_process(eye , threshold)
+        cnt_left_image, cnt_right_image, cnt_center_image = self.count_pixels(left_image ,  right_image , center_image)
+        print(self.count_pixels(left_image,right_image,center_image))
+        result = self.make_frame_decision(cnt_left_image, cnt_right_image, cnt_center_image)
+        self.count_result_after_each_frame(result)
+        self.frame_counter = self.frame_counter + 1
+
+        if self.frame_counter == 20:
+            decision_after_n_frame = self.make_decision_after_n_frame()
+            print(decision_after_n_frame)
+            self.frame_counter = 0
+            self.res_right = 0
+            self.res_left = 0
+            self.res_center = 0
+
+    def count_white_pixels(self , img):
+        n_white_pix = np.sum(img == 255)
+        return n_white_pix
+
+    def eye_process(self , roi , threshold):
+        eye = cv2.resize(roi, (300, 300))
+        cv2.imshow("right", eye)
+        eye_gray = cv2.cvtColor(eye, cv2.COLOR_BGR2GRAY)
+        ret, thresh = cv2.threshold(eye_gray, threshold, 255, cv2.THRESH_BINARY_INV)
+        # cv2.imshow("thre", thresh)
+        kernel = np.ones((5, 5), np.uint8)
+        erosion = cv2.erode(thresh, kernel, iterations=4)
+        cv2.imshow("binary_with_erode", erosion)
+
+        left_image = erosion[:, 0:120]
+        right_image = erosion[:, 220:]
+        center_image = erosion[:, 120:200]
+        return left_image,  right_image, center_image
+
+    def count_pixels(self , left_image , right_image , center_image):
+
+        # cv2.imshow("left_image" , left_image)
+        # cv2.imshow("right_image" , right_image)
+        # cv2.imshow("center_image" , center_image)
+
+        cnt_left_image = self.count_white_pixels(left_image)
+        cnt_right_image = self.count_white_pixels(right_image)
+        cnt_center_image = self.count_white_pixels(center_image)
+
+        return cnt_left_image , cnt_right_image , cnt_center_image
+
+    def make_frame_decision(self , cnt_center_image , cnt_right_image , cnt_left_image):
+        maximum = max(cnt_center_image, cnt_right_image, cnt_left_image)
+        if maximum == cnt_center_image:
+            #print("center")
+            return "center"
+        if maximum == cnt_right_image:
+            #print("right")
+            return "right"
+        if maximum == cnt_left_image:
+            #print("left")
+            return "left"
+
+    def count_result_after_each_frame(self , result):
+        if result == "right" :
+            self.res_right = self.res_right + 1
+        if result == "left":
+            self.res_left = self.res_left + 1
+        if result == "center":
+            self.res_center = self.res_center + 1
+
+    def make_decision_after_n_frame(self):
+
+        print(f'curr :left {self.res_left} ,right: {self.res_right} ,center: {self.res_center}')
+        if self.res_right:
+            return "right"
+        elif self.res_left:
+            return "left"
+        else:
+            return "center"
+
+
