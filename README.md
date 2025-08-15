@@ -35,4 +35,4 @@ The project enhances the reading experience through **eye comfort mode, customiz
 Below is a short video demonstrating the **eye movement tracking** feature in action.  
 This prototype shows how the system detects and follows the user’s gaze in real time —  
 a core component that powers features like **smart scrolling** and **eye-triggered screenshots**.  
-You can find the demo file [here](./demo.mp4).
+the demo file is available in the [`Demo`](./Demo) folder.
