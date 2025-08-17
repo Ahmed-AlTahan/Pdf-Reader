@@ -34,9 +34,10 @@ The project enhances the reading experience through **eye comfort mode, customiz
 
 <img width="1359" height="899" alt="Screenshot (277)" src="https://github.com/user-attachments/assets/b37d1774-7613-4fa8-91f3-581db0c3557b" />
 <img width="1340" height="889" alt="Screenshot (276)" src="https://github.com/user-attachments/assets/f76b9058-b616-4a17-bf9f-898213cbd8fe" />
-<img width="1336" height="886" alt="Screenshot (275)" src="https://github.com/user-attachments/assets/60959973-b06f-4853-a0ee-90e7ee7ba262" />
+<img width="1336" height="886" alt="Screenshot (275)" src="https://github.com/user-attachments/assets/60959973-b06f-4853-a0ee-90e7ee7ba262" /> <br><br>
 
-Below is a short video demonstrating the **eye movement tracking** feature in action.  
-This prototype shows how the system detects and follows the user’s gaze in real time —  
-a core component that powers features like **smart scrolling** and **eye-triggered screenshots**.  
-the demo file is available in the [`Demo`](./Demo) folder.
+> [!IMPORTANT]
+> Below is a short video demonstrating the **eye movement tracking** feature in action.
+> This prototype shows how the system detects and follows the user’s gaze in real time —
+> a core component that powers features like **smart scrolling** and **eye-triggered screenshots**.
+> the demo file is available in the [`Demo`](./Demo) folder.
