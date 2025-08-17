@@ -31,7 +31,8 @@ The project enhances the reading experience through **eye comfort mode, customiz
 ---
 
 ## 🎥 Eye Movement Tracking Demo
-<img width="1920" height="1080" alt="Screenshot (277)" src="https://github.com/user-attachments/assets/e080ac08-ee23-4735-8a94-820c845f6aae" />
+
+<img width="1320" height="480" alt="Screenshot (277)" src="https://github.com/user-attachments/assets/e080ac08-ee23-4735-8a94-820c845f6aae" />
 <img width="1920" height="1080" alt="Screenshot (276)" src="https://github.com/user-attachments/assets/9ebde537-9df3-4717-8c05-a7bc6c85fa07" />
 <img width="1920" height="1080" alt="Screenshot (275)" src="https://github.com/user-attachments/assets/344ab087-0fd9-45eb-acc9-a5e169b6c369" />
 
